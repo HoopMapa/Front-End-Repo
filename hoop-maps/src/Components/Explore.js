@@ -1,14 +1,19 @@
-import '../Component-Styling/Explore.css'
-import React, { useState } from 'react'
-import Icon from 'leaflet';
-import { Grommet, Card, CardBody, Box, Grid } from 'grommet';
-import { FaBasketballBall } from 'react-icons/fa';
-import { Form, FormField, TextInput, Button} from 'grommet'
-import { MapContainer, TileLayer, useMap, Marker, Popup} from 'react-leaflet'
-
+import { Box, Button, Card, CardBody, Form, FormField, Grid, TextInput } from 'grommet';
+import { useState, useEffect } from 'react';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import '../Component-Styling/Explore.css';
+import PostCard from "./Post.js"
 
 export default function Explore(){ 
-const [value, setValue] = React.useState({});
+const [value, setValue] = useState({});
+const [posts, setPosts] = useState([])
+const url = "http://localhost:5004/posts"
+
+useEffect(() => {
+    fetch(url).then(res => res.json()).then(data => setPosts(data.data))
+}, [])
+
+console.log(posts)
 //const markerIcon = new Icon({
   // iconUrl: "https://cdn-icons-png.flaticon.com/512/3349/3349343.png",
   //  iconSize: [25, 25],
@@ -21,35 +26,10 @@ const [value, setValue] = React.useState({});
     <Grid columns="medium"  rows="large" gap="x-small">
         <Box>
             <h1>Court Feed</h1>
-            <Card>
-                <CardBody>
-                    <h2>@ProPlayer</h2>
-                    <p>Up 3 at McCarren!</p>
-                </CardBody>
-            </Card>
-            <Card>
-                <CardBody>
-                    <h2>@ProPlayer</h2>
-                    <p>Up 3 at McCarren!</p>
-                </CardBody>
-            </Card>
-            <Card>
-                <CardBody>
-                    <h2>@ProPlayer</h2>
-                    <p>Up 3 at McCarren!</p>
-                </CardBody>
-            </Card>
-            <Card>
-                <CardBody>
-                    <h2>@ProPlayer</h2>
-                    <p>Up 3 at McCarren!</p>
-                </CardBody>
-            </Card>
-            <Card>
-                <CardBody>
-                    <h2>@ProPlayer</h2>
-                    <p>Up 3 at McCarren Park! Get in while we still playing till 5pm</p>
-                </CardBody>
+            <Card pad="small" background="dark-1" gap="medium">
+                {posts.map(post => (
+                    <PostCard key ={post.id} post={post} />
+                ))}
             </Card>
         </Box>
         <Box>
