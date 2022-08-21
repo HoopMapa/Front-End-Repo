@@ -1,7 +1,6 @@
 import React from "react"
 import { CardBody,CardHeader } from 'grommet';
 
-
 function PostCard({post}) {
     return (
         <>
