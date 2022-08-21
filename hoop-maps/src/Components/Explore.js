@@ -18,7 +18,6 @@ const handleCreateclick = () => {
     setShowModal(true)
 }
 
-console.log(posts)
 //const markerIcon = new Icon({
   // iconUrl: "https://cdn-icons-png.flaticon.com/512/3349/3349343.png",
   //  iconSize: [25, 25],
@@ -32,7 +31,7 @@ console.log(posts)
         <Box>
             <h1>Court Feed</h1>
 
-            <Card pad="small" background="dark-1" gap="medium">
+            <Card pad="small" background="dark-1" gap="medium" className='postCard'>
                 {posts.map(post => (
                     <PostCard key ={post.id} post={post} />
                 ))}
@@ -44,7 +43,7 @@ console.log(posts)
                     <Button type="submit" primary label="Delete Post" background color='hoops'/>
                </Box>
             
-           { showModal ? <CreatePost setShowModal= {setShowModal}/> : ""}
+           { showModal ? <CreatePost setPosts={setPosts} posts={posts} setShowModal= {setShowModal}/> : ""}
         </Box>
         <Box>
             <MapContainer center={[40.72154,-73.95548]} zoom={13} scrollWheelZoom={true}>
