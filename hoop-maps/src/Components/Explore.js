@@ -31,11 +31,14 @@ const handleCreateclick = () => {
         <Box>
             <h1>Court Feed</h1>
 
-            <Card pad="small" background="dark-1" gap="medium" className='postCard'>
+                <div className='postCard'>
                 {posts.map(post => (
-                    <PostCard key ={post.id} post={post} />
+                    <Card pad="small" background="dark-1" gap="medium" className='postCard'>
+
+                        <PostCard key ={post.id} post={post} />
+                    </Card>
                 ))}
-            </Card>
+                </div>
 
                <Box direction="row" gap="medium">
                     <Button onClick={handleCreateclick} type="submit" primary label="Create" background color='hoops'/>
