@@ -1,5 +1,5 @@
 //import logo from './logo.svg';
-import './App.css';
+//import './App.css';
 import React, { useState } from "react";
 import { Grommet } from 'grommet';
 import Landing from './Components/Landing';
@@ -9,9 +9,20 @@ import Explore from './Components/Explore';
 import Login from './Components/Login';
 import Profile from './Components/Profile';
 import {Routes, Route } from 'react-router-dom'
+import { auth } from './firebase-config';
+import { onAuthStateChanged } from 'firebase/auth';
+
 
 
  function App() {
+  const [user, setUser] = React.useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    console.log(currentUser.email)
+  });
+
+
    return (
     <Grommet theme= {{ global: { 
       font: {

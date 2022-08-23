@@ -1,7 +1,11 @@
 import '../Component-Styling/Profile.css'
 import { FaBasketballBall } from 'react-icons/fa';
 import { Card, CardBody, Page, PageHeader, Anchor, Button, PageContent, Paragraph} from 'grommet';
+import { updateCurrentUser } from 'firebase/auth';
+import { auth } from '../firebase-config';
 
+console.log(`${auth.currentUser}`)
+//let displayName = `${auth.currentUser.email}`
 
 export default function Profile(){ 
     return (
@@ -11,7 +15,7 @@ export default function Profile(){
     <Page kind="narrow">      
             <PageHeader
                 className="profileHeader"
-                title="My Profile"
+                title="User"
                 subtitle="A LVL 100 Hooper."
                 parent={<Anchor label="Go Explore" />}
                 actions={<Button label="Edit" primary background color='hoops'/>}
