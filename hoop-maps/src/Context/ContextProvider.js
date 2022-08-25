@@ -4,15 +4,15 @@ import Context from "./Context"
 //Context for different user states
 
 export default function ContextProvider({children}){
-  //const [user, setUser] = useState(null)
+  const [user, setUser] = useState([])
   //const [search, setSearch] = useState("")
   //const [allUsers, setAllUsers] = useState([])
   //const [viewPerson, setViewPerson] = useState({});
   //const [lang, setLang] = useState('english')
 
   const context = {
-    // user,
-    // setUser,
+    user,
+    setUser,
     // search,
     // setSearch,
     // allUsers, 

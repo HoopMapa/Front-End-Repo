@@ -1,19 +1,66 @@
-import { useState } from "react"
+
+import { auth } from '../firebase-config';
+import { onAuthStateChanged} from 'firebase/auth';
+import React, { useState, useContext, useEffect } from 'react'
+import Context from "../Context/Context.js"
+
 
 function CreatePost({ setShowModal, setPosts, posts }) {
+
+    const context = useContext(Context)
+
+    console.log(context.user)
+
+
+    //const context = useContext(Context)
+
+    //console.log(context.user)
+
     const [court, setCourt] = useState("")
     const [post_body,setPost_body] = useState("")
+    
+   // const [user, setUser] = React.useState({});
+   // const [userID, setUserID] = React.useState();
+//Update UserID state --- grab User ID from our database based on firebase email
+  // onAuthStateChanged(auth, (currentUser) => {
+   // setUser(currentUser);
+ //   if (currentUser!= null) {
+     
+     // console.log(currentUser.email); 
+       //console.log(user);
+    ///     fetch(`http://localhost:5004/users/email/${currentUser.email}`) 
+    //        .then((response) => response.json()) 
+    //        .then((data) => {
+    //         //console.log(data.data[0].id); 
+    //         const ID = data.data[0].id;
+    //         setUserID(ID);
+    //    })
+    //    //console.log(userID);
+    //    return userID
+   // }
+         
+  //})
+    
+
+    
+   // console.log(auth.currentUser)
+
+
 
     const handleCloseModal = () => {
         setShowModal(false);
     }
     
     const URL = "http://localhost:5004/posts"
-    const createNewPost = async (e) => {
+    const createNewPost = async () => {
+        //let userID = 1;
+   
+
         if (post_body === "") return 
+   
 
         const newPostInfo = {
-            user_id: 1,
+            user_id: context.user[0].id,
             court, 
             post_body
         }
@@ -25,7 +72,7 @@ function CreatePost({ setShowModal, setPosts, posts }) {
         })
         const data = await response.json()
         const newPost = data.data[0]
-        data.data[0].username = 'Shevaughn!'
+        data.data[0].username = context.user[0].username
         setPosts([newPost, ...posts])
         handleCloseModal()
         setCourt('')

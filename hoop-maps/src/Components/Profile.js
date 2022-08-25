@@ -1,22 +1,40 @@
 import '../Component-Styling/Profile.css'
 import { FaBasketballBall } from 'react-icons/fa';
-import { Card, CardBody, Page, PageHeader, Anchor, Button, PageContent, Paragraph} from 'grommet';
-import { updateCurrentUser } from 'firebase/auth';
+import React, { UseState, useContext, useEffect } from 'react'
+import { Box, Card, CardBody, Page, PageHeader, Anchor, Button, PageContent, Paragraph} from 'grommet';
+import { onAuthStateChanged} from 'firebase/auth';
 import { auth } from '../firebase-config';
+//import { user } from './Components/Login';
+import Context from "../Context/Context.js"
+import Header from "../Components/Header.js"
+import { useNavigate } from 'react-router-dom';
 
-console.log(`${auth.currentUser}`)
-//let displayName = `${auth.currentUser.email}`
+
 
 export default function Profile(){ 
+  const context = useContext(Context)
+  const navigate = useNavigate()
+  console.log(context.user)
+
+
+
+
+
+
+  
+ 
+
     return (
+  <Box>
+  <Header></Header>
   <Card>
 
   <CardBody>
     <Page kind="narrow">      
             <PageHeader
                 className="profileHeader"
-                title="User"
-                subtitle="A LVL 100 Hooper."
+                title={context.user[0].username}
+                subtitle="A level 100 hooper"
                 parent={<Anchor label="Go Explore" />}
                 actions={<Button label="Edit" primary background color='hoops'/>}
              />
@@ -30,6 +48,8 @@ export default function Profile(){
 </Page>
 </CardBody>
 </Card>
+</Box>
     
     
 )}
+    

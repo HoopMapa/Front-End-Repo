@@ -2,9 +2,20 @@ import '../Component-Styling/Landing.css'
 //import {Link} from "react-router-dom"; 
 import { Box, Grid, Text, Accordion, AccordionPanel, Image} from 'grommet';
 //import { Home } from 'grommet-icons';
+import React, { useContext, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import Context from "../Context/Context.js"
+import Offline from './Offline';
+
 
 export default function Landing(){
+    let navigate = useNavigate();
+    const context = useContext(Context)
+    console.log(context.user)
     return (
+        <Box>
+               <Offline></Offline>
+      
         <Box pad="medium">
             <Grid rows="small" gap="medium">
                 <Box>
@@ -55,6 +66,7 @@ export default function Landing(){
                     </AccordionPanel>
                 </Accordion>
             </Grid>
+        </Box>
         </Box>
     )
 }

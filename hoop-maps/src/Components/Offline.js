@@ -9,7 +9,7 @@ import Context from "../Context/Context.js"
 
 
 
-export default function Header (props) {
+export default function Offline (props) {
     let navigate = useNavigate();
     const context = useContext(Context)
     //console.log(context.user)
@@ -28,16 +28,15 @@ export default function Header (props) {
         {...props} 
     >
         <Heading level='3' margin='none'>
-        <Button onClick={() => {context.setUser([]); navigate('/')} }>
+        <Button onClick={() => {context.setUser([]); navigate('/')}}>
         <p> <FaBasketballBall/> Hoop Maps </p> 
         </Button>
         </Heading>
         <Menu
           label ="Menu"
           items={[
-            { label: 'Logout', onClick: () => {context.setUser([]); navigate('/login') }},
-            { label: 'Profile', onClick: () => {navigate('/profile') } },
-            { label: 'Explore', onClick: () => {navigate('/explore') } },
+            { label: 'Register', onClick: () => { navigate('/register') } },
+            { label: 'Login', onClick: () => {navigate('/login') } },
          ]}
         />
     </Box>

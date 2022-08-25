@@ -1,12 +1,19 @@
 import { Box, Button, Card, CardBody, Grid,} from 'grommet';
-import { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import '../Component-Styling/Explore.css';
 import PostCard from "./Post.js"
 import CreatePost from './createPost';
+import Context from "../Context/Context.js"
+import Header from '../Components/Header.js'
 
 
 export default function Explore(){ 
+    const context = useContext(Context)
+
+    console.log(context.user)
+
+
 const [showModal, setShowModal] = useState(false);
 const [posts, setPosts] = useState([])
 const url = "http://localhost:5004/posts"
@@ -23,6 +30,8 @@ const handleCreateclick = () => {
   //  iconSize: [25, 25],
 //})
     return (
+<Box>
+    <Header></Header>
 
 <Card>
 <CardBody>
@@ -63,5 +72,6 @@ const handleCreateclick = () => {
 </Box>
 </CardBody>
 </Card>
+</Box>
 
 )}
