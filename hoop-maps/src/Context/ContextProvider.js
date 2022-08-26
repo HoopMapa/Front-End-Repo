@@ -5,6 +5,7 @@ import Context from "./Context"
 
 export default function ContextProvider({children}){
   const [user, setUser] = useState([])
+  const [currCourt, setCurrCourt] = useState([])
   //const [search, setSearch] = useState("")
   //const [allUsers, setAllUsers] = useState([])
   //const [viewPerson, setViewPerson] = useState({});
@@ -13,6 +14,8 @@ export default function ContextProvider({children}){
   const context = {
     user,
     setUser,
+    currCourt,
+    setCurrCourt
     // search,
     // setSearch,
     // allUsers, 

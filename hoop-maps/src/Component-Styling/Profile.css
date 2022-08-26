@@ -10,3 +10,13 @@
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.formShow {
+    display: none;
+  }
+  
+  .hide-lightbox {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }

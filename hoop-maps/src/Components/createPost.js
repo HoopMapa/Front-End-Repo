@@ -3,13 +3,14 @@ import { auth } from '../firebase-config';
 import { onAuthStateChanged} from 'firebase/auth';
 import React, { useState, useContext, useEffect } from 'react'
 import Context from "../Context/Context.js"
+import { useNavigate } from 'react-router-dom';
 
 
 function CreatePost({ setShowModal, setPosts, posts }) {
-
+    const navigate = useNavigate()
     const context = useContext(Context)
 
-    console.log(context.user)
+    //console.log(context.user)
 
 
     //const context = useContext(Context)
@@ -60,6 +61,7 @@ function CreatePost({ setShowModal, setPosts, posts }) {
    
 
         const newPostInfo = {
+            username: context.user[0].username,
             user_id: context.user[0].id,
             court, 
             post_body

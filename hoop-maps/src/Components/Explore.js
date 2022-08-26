@@ -36,11 +36,11 @@ const handleCreateclick = () => {
 <Card>
 <CardBody>
 <Box pad="medium">
-    <Grid columns="medium"  rows="large" gap="x-small">
+    <Grid columns="large"  rows="large" gap="x-small">
         <Box>
             <h1>Court Feed</h1>
 
-            <Card pad="small" background="dark-1" gap="medium" className='postCard'>
+            <Card pad="medium" background="dark-1" gap="medium" className='postCard'>
                 {posts.map(post => (
                     <PostCard key ={post.id} post={post} />
                 ))}
@@ -61,7 +61,7 @@ const handleCreateclick = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
             <Marker position={[40.72154,-73.95548]}>
-             <Popup>
+             <Popup onClick>
              A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
             </Marker>
