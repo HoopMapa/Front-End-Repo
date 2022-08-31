@@ -9,6 +9,7 @@ import Register from './Components/Register';
 import Explore from './Components/Explore';
 import Login from './Components/Login';
 import Profile from './Components/Profile';
+import FriendProfile from './Components/FriendProfile'
 import {Routes, Route } from 'react-router-dom'
 //import { auth } from './firebase-config';
 //import { onAuthStateChanged } from 'firebase/auth';
@@ -63,6 +64,7 @@ import {Routes, Route } from 'react-router-dom'
          <Route path="/login" element={<Login />} />
          <Route path="/explore" element={<Explore />} />
          <Route path="/profile" element={<Profile />} />
+         <Route path="/fprofile" element={<FriendProfile />} />
         </Routes>
 </Grommet>
    
